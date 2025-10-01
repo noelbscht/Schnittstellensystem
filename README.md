@@ -2,7 +2,8 @@
 
 Ein Webinterface zur Benutzerverwaltung mit Flask, MySQL und REST-API. Erstellt im Rahmen meiner Bewerbung als Fachinformatiker für Anwendungsentwicklung.
 
-## 🌐 https://nbauschat.eu.pythonanywhere.com
+## 🌐 Live-Demo
+- [Seite öffnen](https://nbauschat.eu.pythonanywhere.com)
 
 ## 🔧 Technologien
 
@@ -17,7 +18,7 @@ Ein Webinterface zur Benutzerverwaltung mit Flask, MySQL und REST-API. Erstellt 
 
 1. Repository klonen:
    ```bash
-   git clone https://github.com/noelbscht/schnittstellensystem
+   git clone https://github.com/noelbscht/schnittstellensystem.git
    cd schnittstellensystem
    ```
 
@@ -42,6 +43,10 @@ Ein Webinterface zur Benutzerverwaltung mit Flask, MySQL und REST-API. Erstellt 
    flask run
    ```
 
+## ⚙️ Optional: WSGI-Konfiguration
+- **Datei:** `app.wsgi`  
+- **Hinweis:** Die Umgebungsvariable `PROJECT_PATH` muss in der `.env` gesetzt werden und auf das Projektverzeichnis zeigen.
+
 ## 📚 Dokumentation
 
 - `static/documentation/authentication_table.ddl` – MySQL Tabellenstruktur  
@@ -63,7 +68,7 @@ Die Weboberfläche zeigt:
 
 ## 📄 Lizenz
 
-Siehe [LICENSE](LICENSE)
+Siehe [LICENSE](LICENSE) – Nutzung nur mit Verweis auf mein GitHub-Profil und ausschließlich für nicht-kommerzielle Zwecke.
 
 ## 🎯 Zweck
 
