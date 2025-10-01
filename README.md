@@ -73,3 +73,11 @@ Siehe [LICENSE](LICENSE) – Nutzung nur mit Verweis auf mein GitHub-Profil und 
 ## 🎯 Zweck
 
 Dieses Projekt dient ausschließlich Demonstrations- und Bewerbungszwecken im Rahmen meiner Ausbildungssuche.
+
+## 🍪 Cookie-Banner
+
+Der Cookie-Banner wurde selbstständig ohne externe Libraries umgesetzt.
+- **Consent-Status im JSON-Format:** übersichtlich, speicherbar und leicht erweiterbar (z. B. für weitere Kategorien).
+- **Zustimmungslogik:** Banner bleibt sichtbar, bis eine Auswahl getroffen wurde; Änderungen sind jederzeit möglich.
+- **Architektur:** könnte problemlos in die bestehende Popup-Struktur integriert werden.
+- **Hinweis:** Dieses Projekt verwendet nur notwendige Cookies; der Banner dient daher vor allem als technische Demonstration und Basis für Erweiterungen.  
