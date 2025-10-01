@@ -4,6 +4,9 @@ from flask_mysqldb import MySQL
 from dotenv import load_dotenv
 import os
 
+# load .env file
+load_dotenv()
+
 app = Flask(__name__)
 app.secret_key = os.getenv("FLASK_SECRET_KEY")
 cors = CORS(app)
