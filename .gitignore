@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+*.so
+
+# Enviroment
+.env
+.venv/
+
+# Personal files
+templates/impressum.html
+templates/datenschutz.html
+
+# Debugging / Logs
+pip-log.txt
+*.log
