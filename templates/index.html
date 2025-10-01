@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+{% set title = "Startseite" %}
+
+{% block head %}
+{% endblock %}
+
+{% block body %}
+<div class="nav-profile-box dropdown">
+    <img width="64" src="{{url_for('static', filename='img/svg/profile.svg')}}">
+    <span class="profile-user">
+        Benutzer (Gruppe)
+    </span>
+</div>
+<div class="dropdown-content">
+    {% if 'group' in session %}
+    <div class="dropdown-info group" title="Gruppe">{{ session['group'] }}</div>
+    <small class="dropdown-info" title="Permissions">Permissions:</small>
+    {% if 'permissions' in session and session['permissions']|length > 0 %}
+    <small class="dropdown-info" title="Permissions">{{ session['permissions'] }}</small>
+    {% else %}
+    <small class="dropdown-info" title="Permissions">/</small>
+    {% endif %}
+    {% endif %}
+    <span class="dropdown-hr"></span>
+    <a class="dropdown-item" href="{{url_for('login', group='admin')}}"><i class="fas fa-user"></i>Admin</a>
+    <a class="dropdown-item" href="{{url_for('login', group='user')}}"><i class="fas fa-user"></i>User</a>
+    <span class="dropdown-hr"></span>
+</div>
+
+
+<div class="element-box simple special">
+    <h1>Schnittstellen Projekt</h1>
+    <hr>
+    <p>Dieses <strong>Schnittstellensystem</strong> ermöglicht eine schnelle Optimierung und Übersicht über alle Endpunkte.</p>
+</div>
+<div class="element-box simple">
+    <h2>Verfügbare Endpunkte</h2>
+    <small>Hinzugefügte <u>Beispiele</u> zum testen des Schnittstellensystems</small>
+    <table class="table text-block table-bordered">
+        <thead>
+            <tr>
+                <th>Ressource</th>
+                <th>Beschreibung</th>
+                <th>Methoden</th>
+                <th>Header (*erforderlich)</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for route in routes %}
+            <tr>
+                <td>/api/{{ route.path }}</td>
+                <td>{{ route.description }}</td>
+                <td>{{ ", ".join(route.methods) }}</td>
+
+                {% set headers = [] %}
+                {% for header in route.headers %}
+                {% if header.required %}
+                {% set _ = headers.append("*" + header.key) %}
+                {% else %}
+                {% set _ = headers.append(header.key) %}
+                {% endif %}
+                {% endfor %}
+
+                <td>{{ ", ".join(headers) if route.headers else "/" }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+<div class="element-box">
+    <h3>Schnittstelle anfragen</h3>
+    <hr>
+    <div class="input-box">
+        <label for="route-sel"><b>Schnittstelle</b>: </label>
+        <select class="form-control" name="route-sel" id="route-sel">
+            {% for r in routes %}
+            <option value="{{ r.path }}">{{ r.__class__.__name__ }} (/api/{{r.path}})</option>
+            {% endfor %}
+        </select>
+        <label for="method-sel"><b>Methode</b>:</label>
+        <select id="method-sel" class="form-control" name="method">
+            <option value="GET">GET</option>
+            <option value="POST">POST</option>
+            <option value="PUT">PUT</option>
+            <option value="DELETE">DELETE</option>
+        </select>
+        <input type="button" value="Senden" class="btn btn-primary"  name="send-request" id="send-request">
+    </div>
+    <div class="input-box">
+        <input type="button" class="btn btn-primary" onclick="headerPopup.show();" id="btn-header" value="Benutzerdefinierte Header (0)">
+    </div>
+    <label for="request-result"><b>Ausgabe</b>: </label>
+    <textarea id="request-result" class="form-control">
+
+    </textarea>
+</div>
+<div class="element-box">
+    <h2>Fehlermanagement</h2>
+    <p>Die API verwendet standardisierte HTTP-Statuscodes für Fehlerbehandlung:</p>
+    <ul>
+        <li><strong class="bg-green">200 OK</strong> - Anfrage erfolgreich</li>
+        <li><strong class="bg-red">400 BAD REQUEST</strong> - Ungültige Parameter</li>
+        <li><strong class="bg-red">401 UNAUTHORIZED</strong> - Keine Berechtigung</li>
+        <li><strong class="bg-red">404 NOT FOUND</strong> - Endpunkt nicht gefunden</li>
+        <li><strong class="bg-red">405 BAD REQUEST</strong> - Methode wird nicht unterstützt.</li>
+        <li><strong class="bg-red">422 UNPROCESSABLE ENTITY</strong> - Erforderliche Header sind unvollständig</li>
+        <li><strong class="bg-darkred">500 INTERNAL SERVER ERROR</strong> - Serverfehler</li>
+    </ul>
+</div>
+<div class="element-box simple">
+    <h2><u>Dokumentation</u></h2>
+    <hr>
+    <h4>Klassendiagramm: </h4>
+    {{documentation | safe }}
+    <br>
+    <!--<h4>Anwendungsbeispiel:</h4>
+    <a class="btn btn-block btn-primary" href="{{url_for('static', filename='documentation/interface_example.py')}}">Python: Klassen-Einbindung (Flask/Django)</a>
+    <br><br>
+    <a class="btn btn-block btn-secondary" href="{{url_for('static', filename='documentation/main_example.py')}}">Python: Beispielserver mit Flask</a>-->
+    <h4>Auf Github ansehen:</h4>
+    <a href="https://github.com/noelbscht/schnittstellensystem" target="_blank" class="btn btn-dark"><i class="fab fa-github"></i> Repository ansehen</a>
+    <hr>
+    <h4>MySQL Tabelle(n): </h4>
+    <a class="btn btn-block btn-secondary" onclick="popupTable.show();">Authentication Table</a>
+</div>
+<script type="text/javascript" src="{{url_for('static', filename='js/action.js')}}"></script>
+{% endblock %}

@@ -1,0 +1,84 @@
+.dropdown {
+    position: absolute;
+}
+
+.dropdown-content {
+    font-size: 18px;
+    position: fixed;
+    right: 0;
+    top: 7vh;
+    justify-items: center;
+    padding: 0.5rem;
+    border: #ccc solid 0.15rem;
+    border-top: none;
+    border-right: none;
+    border-radius: 0px 0px 0px 5px;
+    display: none;
+    background-image: linear-gradient(#111, #212529) !important;
+    min-width: 100px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+    z-index: 1001;
+}
+
+.dropdown:hover + .dropdown-content, .dropdown-content:hover {
+    display: grid !important;
+}
+
+.dropdown-item {
+    display: flex !important;
+    color: white !important;
+    text-decoration: none;
+    text-align: center !important;
+    min-width: 10vw;
+}
+
+.dropdown-item i,svg {
+    justify-self: center;
+    align-self: center;
+    padding-right: 1rem;
+}
+
+.dropdown-hr {
+    border-top: 0.1rem solid #fff;
+    margin: 0.3rem 0.1rem 0.3rem 0.1rem;
+    width: -webkit-fill-available;
+    color: white !important;
+}
+
+.dropdown-item:hover, .dropdown-item:focus {
+    background: radial-gradient(#202428, #222);
+    color: #fff !important;
+}
+
+.dropdown-info {
+    cursor: default;
+    border-radius: 3px;
+    color: white;
+    font-weight: bolder;
+    text-shadow: #eee 1px 0 5px;
+    text-align: center !important;
+    text-decoration: none;
+}
+
+.dropdown-info.group {
+    color: lightblue;
+}
+
+.nav-profile-box {
+    position: fixed !important;
+    display: flex;
+    top: 0px;
+    right: 0px;
+    background-color: #111;
+    align-items: center;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+    height: 7vh;
+    margin: 0;
+    min-width: 13.5vw;
+    width: auto;
+    border-radius: 30px 0px 0px 30px;
+    transition: background-color 0.2s ease-in-out;
+    z-index: 998;
+}

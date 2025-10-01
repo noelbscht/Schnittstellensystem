@@ -1,0 +1,125 @@
+.popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 10, 0.5);
+    animation: fadeIn 1s ease-in-out;
+}
+
+.popup-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 30vw;
+    min-height: 35vh;
+    max-height: 75vh;
+    overflow-y: auto;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 2.5%;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px 1px #aaa;
+    display: flex;
+    flex-direction: column;
+    animation: slideIn 0.4s ease-in-out;
+}
+
+.popup-content table {
+    max-height: 40vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.btn-close {
+    position: absolute !important;
+    top: 1rem !important;
+    right: 1rem !important;
+    background-color: #999 !important;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-close:hover {
+    background-color: #666 !important;
+}
+
+.popup-content input {
+    margin: 5px;
+    min-width: 50%;
+    align-self: center;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: border-color 0.3s;
+}
+
+.popup-content input:focus {
+    border-color: #007bff;
+}
+
+.delete-box {
+    background-color: #b93b3b;
+    border-radius: 25px;
+    width: 100px;
+    height: 100px;
+    align-self: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.file-container {
+    width: 100%;
+    height: 115px;
+    max-height: 250px;
+    overflow-y: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    border-radius: 5px;
+    background-color: #ccc;
+}
+
+.file-container img,
+.file-container video,
+.file-container audio {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    cursor: pointer;
+    border-radius: 15px;
+    background-color: #111;
+}
+
+.file-container img.draggable,
+.file-container video.draggable,
+.file-container audio.draggable {
+    cursor: move;
+}
+
+@media (max-width: 800px) {
+    .popup-content {
+        font-size: 14px !important;
+        min-width: 98vw;
+        min-height: 55vh;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translate(-50%, -70%);
+    }
+    to {
+        transform: translate(-50%, -50%);
+    }
+}
